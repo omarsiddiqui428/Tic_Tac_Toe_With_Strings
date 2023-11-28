@@ -1,7 +1,7 @@
-def draw_board(spots):
-    board = (f"|{spots[1]}|{spots[2]}|{spots[3]}|\n"
-             f"|{spots[4]}|{spots[5]}|{spots[6]}|\n"
-             f"|{spots[7]}|{spots[8]}|{spots[9]}|")
+def draw_board(spot1,spot2,spot3,spot4,spot5,spot6,spot7,spot8,spot9):
+    board = (f"|{spot1}|{spot2}|{spot3}|\n"
+             f"|{spot4}|{spot5}|{spot6}|\n"
+             f"|{spot7}|{spot8}|{spot9}|")
     print(board)
 
 
@@ -12,15 +12,15 @@ def check_turn(turn):
         return "X"
 
 
-def check_win(spots):
-    if (spots[1] == spots[2] == spots[3]
-            or spots[4] == spots[5] == spots[6]
-            or spots[7] == spots[8] == spots[9]
-            or spots[1] == spots[4] == spots[7]
-            or spots[2] == spots[5] == spots[8]
-            or spots[3] == spots[6] == spots[9]
-            or spots[7] == spots[5] == spots[3]
-            or spots[1] == spots[5] == spots[9]):
+def check_win(spot1,spot2,spot3,spot4,spot5,spot6,spot7,spot8,spot9):
+    if (spot1 == spot2 == spot3
+            or spot4 == spot5 == spot6
+            or spot7 == spot8 == spot9
+            or spot1 == spot4 == spot7
+            or spot2 == spot5 == spot8
+            or spot3 == spot6 == spot9
+            or spot7 == spot5 == spot3
+            or spot1 == spot5 == spot9):
         return True
 
     # if (spots[1] in ["X", "O"]
