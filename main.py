@@ -3,14 +3,22 @@ print("Welcome to Tic Tac Toe")
 
 from helpers import draw_board, check_turn, check_win
 
-spots = {1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9'}
+spot1 = 1
+spot2 = 2
+spot3 = 3
+spot4 = 4
+spot5 = 5
+spot6 = 6
+spot7 = 7
+spot8 = 8
+spot9 = 9
 
 playing = True
 complete = False
 turn = 0
 last_turn = -1
 while playing: #explain here
-    draw_board(spots)
+    draw_board(spot1,spot2,spot3,spot4,spot5,spot6,spot7,spot8,spot9)
     if last_turn == turn:
         print("That spot is taken, pick an open spot")
     last_turn = turn
@@ -20,11 +28,14 @@ while playing: #explain here
     if choice == 'Q':
         playing = False
     elif choice in ['1','2','3','4','5','6','7','8','9']:
-        if spots[int(choice)] not in ["X","O"]:
-            turn += 1
-            spots[int(choice)] = check_turn(turn)
+        current_spot = int(choice)
+        spot_value = eval(f'spot{current_spot}')
 
-    if check_win(spots) == True:
+        if spot_value not in ["X","O"]:
+            turn += 1
+            exec(f"spot{current_spot} = check_turn(turn)")
+
+    if check_win(spot1,spot2,spot3,spot4,spot5,spot6,spot7,spot8,spot9) == True:
         playing = False
         complete = True
 
@@ -32,7 +43,7 @@ while playing: #explain here
         playing = False
         complete = False
 
-draw_board(spots)
+draw_board(spot1,spot2,spot3,spot4,spot5,spot6,spot7,spot8,spot9)
 
 if complete == True:
     if check_turn(turn) == "X":
@@ -44,8 +55,3 @@ else:
     print("The game is tied. No winner.")
 
 print("Thanks for playing!")
-
-#every single other program requries a main function, so that's why we have this specific syntax
-#Add computer player using rand
-#Machine learning creates AI. Machine learning is creating a program in a way that it gets better/smarter as the program runs
-#Machine learning to make this smarter- know this program inside and out to optimize it with Machine learning
